@@ -1,0 +1,36 @@
+appId: ir.10ck.geneos
+productName: Gene OS
+copyright: Copyright (c) 2026 Mersad (Bitologist)
+directories:
+  output: dist
+  buildResources: build
+files:
+  - src/**/*
+  - build/icon.ico
+  - package.json
+  - "!**/*.map"
+  - "!**/.versions/**"
+# better-sqlite3 ships a native .node binary - it must live outside the asar archive
+asarUnpack:
+  - "node_modules/better-sqlite3/**"
+win:
+  icon: build/icon.ico
+  legalTrademarks: Gene OS
+  executableName: GeneOS
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Gene OS
+  uninstallDisplayName: Gene OS
+  deleteAppDataOnUninstall: false
+  artifactName: GeneOS-Setup-${version}.${ext}
+portable:
+  artifactName: GeneOS-Portable-${version}.${ext}

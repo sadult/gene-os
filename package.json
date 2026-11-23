@@ -1,0 +1,53 @@
+{
+  "name": "gene-os",
+  "productName": "Gene OS",
+  "version": "2.1.0",
+  "description": "Gene OS — a terminal-driven research operating environment for animal breeding & genetics",
+  "main": "src/main/main.js",
+  "author": {
+    "name": "Mersad (Bitologist)",
+    "url": "https://10ck.ir"
+  },
+  "homepage": "https://github.com/sadult/gene-os",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sadult/gene-os.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sadult/gene-os/issues"
+  },
+  "keywords": [
+    "animal-breeding",
+    "quantitative-genetics",
+    "blup",
+    "research",
+    "electron",
+    "terminal",
+    "desktop",
+    "windows"
+  ],
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "test": "node --test \"tests/**/*.test.mjs\"",
+    "test:db": "node scripts/run-db-smoke.cjs",
+    "test:all": "npm test && npm run test:db",
+    "build": "electron-builder --win",
+    "build:portable": "electron-builder --win portable",
+    "build:installer": "electron-builder --win nsis",
+    "build:dir": "electron-builder --win --dir",
+    "clean": "node scripts/clean.cjs"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.2.0"
+  },
+  "devDependencies": {
+    "electron": "^45.3.4",
+    "electron-builder": "^26.15.3"
+  }
+}

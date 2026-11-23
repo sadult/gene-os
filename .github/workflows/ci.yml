@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        run: npm install
+      - name: Science engine tests
+        run: npm test
+      - name: Database & services smoke test
+        run: npm run test:db
+
+  package:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: test
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - name: Build installer and portable EXE
+        run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gene-os-windows
+          path: dist/*.exe

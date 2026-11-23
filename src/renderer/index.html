@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: gosfile:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'">
+  <title>Gene OS</title>
+  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/os.css">
+</head>
+<body>
+  <div id="boot" class="boot" aria-live="polite"></div>
+  <div id="shell" class="shell" hidden>
+    <header class="topbar" id="topbar">
+      <div class="brand" title="Gene OS">
+        <span class="brand-mark" data-ico="dna"></span>
+        <span class="brand-name">GENE<b>OS</b></span>
+        <pre class="mini-helix" id="helix" aria-hidden="true"></pre>
+      </div>
+      <div class="top-status" id="top-status"></div>
+      <div class="top-actions">
+        <button class="tbtn" data-act="search" title="Global search (Ctrl+Shift+F)"><span data-ico="search"></span><span class="lbl">SEARCH</span></button>
+        <button class="tbtn" data-act="palette" title="Command palette (Ctrl+K)"><span data-ico="command"></span><span class="lbl">COMMANDS</span></button>
+        <button class="tbtn" data-act="notifications" title="Notifications (Ctrl+Shift+B)"><span data-ico="bell"></span><span id="notif-count" class="count">0</span></button>
+        <button class="tbtn" data-act="lock" title="Lock screen (Ctrl+Alt+L)"><span data-ico="lock"></span></button>
+        <button class="tbtn" data-act="settings" title="Settings (Ctrl+,)"><span data-ico="settings"></span></button>
+        <span class="win-controls">
+          <button class="wbtn" data-act="min" title="Minimize">─</button>
+          <button class="wbtn" data-act="max" title="Maximize / restore">▢</button>
+          <button class="wbtn" data-act="full" title="Fullscreen (F11)">⛶</button>
+          <button class="wbtn close" data-act="close" title="Shut down Gene OS">✕</button>
+        </span>
+      </div>
+    </header>
+    <nav class="dock" id="dock" aria-label="Modules"></nav>
+    <main class="view" id="view" tabindex="-1"></main>
+    <footer class="statusbar" id="statusbar"></footer>
+  </div>
+  <div id="lock" class="lock" hidden></div>
+  <div id="layer"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
